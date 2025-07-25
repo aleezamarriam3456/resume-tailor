@@ -14,6 +14,21 @@ import { Card } from '@/components/ui/card'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
 
+// Added UI component imports:
+import { Accordion } from '@/components/ui/accordion'
+import { Alert } from '@/components/ui/alert'
+import {
+  AlertDialog,
+  AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogAction,
+  AlertDialogCancel,
+} from '@/components/ui/alert-dialog'
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
+import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator, BreadcrumbEllipsis } from '@/components/ui/breadcrumb'
+import { Badge } from '@/components/ui/badge'
+import { AspectRatio } from '@/components/ui/aspect.radio'
+
 export default function ResumeTailor() {
   const [resume, setResume] = useState('')
   const [jobDesc, setJobDesc] = useState('')
@@ -119,11 +134,21 @@ export default function ResumeTailor() {
 
       <footer className="max-w-7xl mx-auto px-6 py-6 text-center text-sm text-slate-500">
         Made with ❤️ by You |{' '}
-        <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="underline hover:text-blue-600">
+        <a
+          href="https://linkedin.com/in/yourprofile"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline hover:text-blue-600"
+        >
           LinkedIn
         </a>{' '}
         |{' '}
-        <a href="https://github.com/yourgithub" target="_blank" rel="noopener noreferrer" className="underline hover:text-blue-600">
+        <a
+          href="https://github.com/yourgithub"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline hover:text-blue-600"
+        >
           GitHub
         </a>
       </footer>
