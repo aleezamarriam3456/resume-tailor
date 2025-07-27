@@ -5,7 +5,7 @@ import { useState } from 'react'
 // Correct component imports (singular FeatureIcon, not FeatureIcons)
 import DashboardPreview from '@/components/illustrations/dashboard-preview'
 import HeroIllustration from '@/components/illustrations/hero-illustration'
-import FeatureIcon from '@/components/illustrations/feature-icons' // singular
+import FeatureIcon from '@/components/illustrations/feature-icons'
 import TestimonialSection from '@/components/illustrations/testimonals'
 import ProcessIllustration from '@/components/illustrations/process-illustration'
 
@@ -28,6 +28,22 @@ import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator, BreadcrumbEllipsis } from '@/components/ui/breadcrumb'
 import { Badge } from '@/components/ui/badge'
 import { AspectRatio } from '@/components/ui/aspect.radio'
+
+// ** Added import for Calendar component **
+import { Calendar } from '@/components/ui/calender'
+
+// Import carousel, chart, and checkbox as requested
+import {Carousel}  from '@/components/ui/carousel'
+import { Chart } from '@/components/ui/chart'
+import {
+  Collapsible,
+  CollapsibleTrigger,
+  CollapsibleContent
+} from '@/components/ui/collapsible'
+
+
+
+import { Checkbox } from '@/components/ui/checkbox'
 
 export default function ResumeTailor() {
   const [resume, setResume] = useState('')
