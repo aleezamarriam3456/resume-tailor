@@ -25,25 +25,83 @@ import {
   AlertDialogCancel,
 } from '@/components/ui/alert-dialog'
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
-import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator, BreadcrumbEllipsis } from '@/components/ui/breadcrumb'
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+  BreadcrumbEllipsis,
+} from '@/components/ui/breadcrumb'
 import { Badge } from '@/components/ui/badge'
-import { AspectRatio } from '@/components/ui/aspect.radio'
-
+import { AspectRatio } from '@/components/ui/aspect-ratio'
 // ** Added import for Calendar component **
-import { Calendar } from '@/components/ui/calender'
-
+import { Calendar } from '@/components/ui/calendar'
 // Import carousel, chart, and checkbox as requested
-import {Carousel}  from '@/components/ui/carousel'
+import { Carousel } from '@/components/ui/carousel'
 import { Chart } from '@/components/ui/chart'
 import {
   Collapsible,
   CollapsibleTrigger,
-  CollapsibleContent
+  CollapsibleContent,
 } from '@/components/ui/collapsible'
+import {
+  CommandDialog,
+  CommandInput,
+  CommandList,
+  CommandItem,
+  CommandEmpty,
+  CommandGroup,
+  CommandSeparator,
+  CommandShortcut,
+  Command,
+} from '@/components/ui/command'
 
-
+import {
+  ContextMenu,
+  ContextMenuTrigger,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuCheckboxItem,
+  ContextMenuRadioItem,
+  ContextMenuLabel,
+  ContextMenuSeparator,
+  ContextMenuShortcut,
+  ContextMenuGroup,
+  ContextMenuPortal,
+  ContextMenuSub,
+  ContextMenuSubContent,
+  ContextMenuSubTrigger,
+  ContextMenuRadioGroup,
+} from '@/components/ui/context-menu'
 
 import { Checkbox } from '@/components/ui/checkbox'
+
+// Import Dialog components from dialog.tsx
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogClose,
+  DialogHeader,
+  DialogFooter,
+  DialogTitle,
+  DialogDescription,
+} from '@/components/ui/dialog'
+
+// Import Drawer components from drawer.tsx
+import {
+  Drawer,
+  DrawerTrigger,
+  DrawerContent,
+  DrawerClose,
+  DrawerHeader,
+  DrawerFooter,
+  DrawerTitle,
+  DrawerDescription,
+} from '@/components/ui/drawer'
+
 
 export default function ResumeTailor() {
   const [resume, setResume] = useState('')
@@ -51,10 +109,15 @@ export default function ResumeTailor() {
   const [tailoredResume, setTailoredResume] = useState('')
   const [loading, setLoading] = useState(false)
 
+  // Dialog open state
+  const [dialogOpen, setDialogOpen] = useState(false)
+
   const handleTailor = async () => {
     setLoading(true)
     await new Promise((r) => setTimeout(r, 1500))
-    setTailoredResume(`Tailored Resume based on Job Description:\n\n${jobDesc}\n\n...tailored content...`)
+    setTailoredResume(
+      `Tailored Resume based on Job Description:\n\n${jobDesc}\n\n...tailored content...`
+    )
     setLoading(false)
   }
 
@@ -76,14 +139,18 @@ export default function ResumeTailor() {
             Tailor Your Resume Effortlessly
           </h2>
           <p className="text-lg text-slate-700">
-            Paste your resume and job description, then let AI craft the perfect tailored resume for you.
+            Paste your resume and job description, then let AI craft the perfect
+            tailored resume for you.
           </p>
         </header>
 
         <Card className="max-w-4xl w-full p-8 mb-12 shadow-lg">
           <div className="grid md:grid-cols-2 gap-8">
             <section>
-              <label htmlFor="resume" className="mb-2 font-semibold text-slate-700 block">
+              <label
+                htmlFor="resume"
+                className="mb-2 font-semibold text-slate-700 block"
+              >
                 Your Resume
               </label>
               <Textarea
@@ -96,7 +163,10 @@ export default function ResumeTailor() {
             </section>
 
             <section>
-              <label htmlFor="jobDesc" className="mb-2 font-semibold text-slate-700 block">
+              <label
+                htmlFor="jobDesc"
+                className="mb-2 font-semibold text-slate-700 block"
+              >
                 Job Description
               </label>
               <Textarea
@@ -118,10 +188,35 @@ export default function ResumeTailor() {
 
         {tailoredResume && (
           <Card className="max-w-3xl bg-white rounded-2xl p-8 shadow-lg border border-slate-200 whitespace-pre-wrap text-slate-800">
-            <h3 className="text-2xl font-semibold mb-4 text-blue-700">🎉 Tailored Resume</h3>
+            <h3 className="text-2xl font-semibold mb-4 text-blue-700">
+              🎉 Tailored Resume
+            </h3>
             <pre>{tailoredResume}</pre>
           </Card>
         )}
+
+        {/* Dialog example */}
+        <div className="mb-12">
+          <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+            <DialogTrigger asChild>
+              <Button variant="outline">Open Help Dialog</Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>How to Use Resume Tailor</DialogTitle>
+                <DialogDescription>
+                  Paste your resume and job description, then click &quot;Tailor My
+                  Resume&quot; to get a customized version.
+                </DialogDescription>
+              </DialogHeader>
+              <DialogFooter>
+                <DialogClose asChild>
+                  <Button>Close</Button>
+                </DialogClose>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+        </div>
 
         {/* Feature Icon with type "ai" */}
         <section className="max-w-7xl w-full mb-12 flex justify-center">
